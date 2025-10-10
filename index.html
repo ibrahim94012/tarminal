@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="shortcut icon" href="ibrahim.png" type="image/x-icon">
+<title>Terminal</title>
+<!-- icons -->
+<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="vault" role="application" aria-label="Terminal Vault">
+    <div class="header">
+      <i class="fa-solid fa-circle"></i>
+      <i class="fa-solid fa-circle"></i>
+      <i class="fa-solid fa-circle"></i>
+    </div>
+
+    <div id="terminal" class="terminal" tabindex="0" aria-live="polite"></div>
+
+    <div class="input-wrap">
+      <input id="cmdInput" class="cmd" placeholder="type a command (type 'help')" autocomplete="off" />
+      <button id="sendBtn" class="btn">Run</button>
+    </div>
+
+  </div>
+
+<!-- script -->
+ <script src="script.js"></script>
+</body>
+</html>
