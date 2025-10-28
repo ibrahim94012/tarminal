@@ -3,11 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="shortcut icon" href="ibrahim.png" type="image/x-icon">
+<link rel="shortcut icon" href="icons/ibrahim.jpg" type="image/x-icon">
 <title>Terminal</title>
 <!-- icons -->
 <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="flowchart.css">
+<!-- Inter font as user prefers -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="vault" role="application" aria-label="Terminal Vault">
@@ -17,16 +20,316 @@
       <i class="fa-solid fa-circle"></i>
     </div>
 
-    <div id="terminal" class="terminal" tabindex="0" aria-live="polite"></div>
+    <div id="terminal" class="terminal" tabindex="0" aria-live="polite">
+      <div class="portfolio">
+        <div class="landing">
+            <div class="landing-img">
+              <img src="icons/ibrahim.jpg">
+            </div>
+            <div class="landing-col">
+              <div class="ceo-name">ibrahim khalil</div>
+              <p class="desc">Developer, Electrician</p>
+            </div>
+            
+        </div>
+        <div class="row">
+           <div class="aboutMe-title">
+                <h2>About me</h2>
+           </div>
+           <p class="about-description">
+                My name is Ibrahim Khalil. I have completed my 12th grade and am currently pursuing my Bachelor’s degree (Honours). <br>I am a passionate and creative individual who loves to learn new things. I have strong skills in web design and development, and I can build modern websites using HTML, CSS, and JavaScript. <br>
+                In addition to my web skills, I also have practical experience in electrical house wiring, which has helped me develop strong technical and problem-solving abilities. <br>
+                My goal is to build a successful career by combining technology, creativity, and hands-on experience.
+            </p>
+        </div>
+        <div class="row">
+            <div class="education-title">
+              <h2 class="education">Education</h2>
+            </div>
+            <div class="education-tree-canvas school-canva college-canva">
+                <div class="top-right-L trL-one"></div>
+                <div class="left-bottom-l"></div>
+                <div class="line-vw"></div>
 
-    <div class="input-wrap">
-      <input id="cmdInput" class="cmd" placeholder="type a command (type 'help')" autocomplete="off" />
-      <button id="sendBtn" class="btn">Run</button>
+                <div class="institution school">school</div>
+                <div class="institution college">college</div>
+
+                <div class="right-bottom-l school-content"></div>
+                <div class="left-bottom-l lbl-two college-content"></div>
+                <div class="top-right-L trL-two school-content"></div>
+                <div class="top-left-l college-content"></div>
+                <div class="line-left line-one school-content"></div>
+                <div class="line-left line-two school-content"></div>
+                <div class="line-left line-three college-content"></div>
+                <div class="standard psc school-content">psc</div>
+                <div class="standard jsc school-content">jsc</div>
+                <div class="standard ssc school-content">ssc</div>
+                <div class="standard hsc college-content">hsc</div>
+                <div class="standard bsc college-content">bsc</div>
+
+                <div class="line-left line-four school-content"></div>
+                <div class="line-left line-five school-content"></div>
+                <div class="line-left line-six school-content"></div>
+                <div class="line-left line-seven college-content"></div>
+                <div class="line-left line-eight college-content"></div>
+
+
+
+                <div class="standard-details ssc-details school-content">
+                  <div class="detail-item"><span class="list">INST</span><span>:</span><span>baraikhali high school</span></div>
+                  <div class="detail-item"><span class="list">YEAR</span><span>:</span><span>2023</span></div>
+                  <div class="detail-item"><span class="list">GPA</span><span>:</span><span>3.85</span></div>
+                </div>
+
+                <div class="standard-details jsc-details school-content">
+                  <div class="detail-item"><span class="list">INST</span><span>:</span><span>baraikhali high school</span></div>
+                  <div class="detail-item"><span class="list">YEAR</span><span>:</span><span>2019</span></div>
+                  <div class="detail-item"><span class="list">GPA</span><span>:</span><span>N/A</span></div>
+                </div>
+
+                <div class="standard-details psc-details school-content">
+                  <div class="detail-item"><span class="list">INST</span><span>:</span><span>PBGPS</span></div>
+                  <div class="detail-item"><span class="list">YEAR</span><span>:</span><span>2015</span></div>
+                  <div class="detail-item"><span class="list">GPA</span><span>:</span><span>3.08</span></div>
+                </div>
+
+                <div class="standard-details hsc-details college-content">
+                  <div class="detail-item"><span class="list">INST</span><span>:</span><span>adarsha degree (hon's) college</span></div>
+                  <div class="detail-item"><span class="list">YEAR</span><span>:</span><span>2025</span></div>
+                  <div class="detail-item"><span class="list">GPA</span><span>:</span><span>2.92</span></div>
+                </div>
+
+                <div class="standard-details bsc-details college-content">
+                  <div class="detail-item"><span class="list">INST</span><span>:</span><span>n/a</span></div>
+                  <div class="detail-item"><span class="list">YEAR</span><span>:</span><span>n/a</span></div>
+                  <div class="detail-item"><span class="list">GPA</span><span>:</span><span>n/a</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="row skill-section">
+            <div class="skill-scetion-title">
+              <h2>My skills</h2>
+            </div>
+            <div class="skill-row">
+              <div class="skill-col">
+                  <div class="skill-box" data-skill="85">
+                    <div class="skill-desc">
+                      <p class="skill-title">
+                        <span><img src="icons/html.png"></span>
+                        <span>HTML</span>
+                      </p>
+                      <p class="skill-persentage">0%</p>
+                    </div>
+                    <div class="skill-meter"></div>
+                  </div>
+
+                  <div class="skill-box" data-skill="80">
+                    <div class="skill-desc">
+                      <p class="skill-title">
+                        <span><img src="icons/css.png"></span>
+                        <span>CSS</span>
+                      </p>
+                      <p class="skill-persentage">0%</p>
+                    </div>
+                    <div class="skill-meter"></div>
+                  </div>
+
+                  <div class="skill-box" data-skill="45">
+                    <div class="skill-desc">
+                      <p class="skill-title">
+                        <span><img src="icons/js.png"></span>
+                        <span>JAVASCRIPT</span>
+                      </p>
+                      <p class="skill-persentage">0%</p>
+                    </div>
+                    <div class="skill-meter"></div>
+                  </div>
+
+                  <div class="skill-box" data-skill="80">
+                    <div class="skill-desc">
+                      <p class="skill-title">
+                        <span><img src="icons/ps.png"></span>
+                        <span>PHOTOSHOP</span>
+                      </p>
+                      <p class="skill-persentage">0%</p>
+                    </div>
+                    <div class="skill-meter"></div>
+                  </div>
+
+                  <div class="skill-box" data-skill="70">
+                    <div class="skill-desc">
+                      <p class="skill-title">
+                        <span><img src="icons/ai.png"></span>
+                        <span>ILLUSTRATOR</span>
+                      </p>
+                      <p class="skill-persentage">0%</p>
+                    </div>
+                    <div class="skill-meter"></div>
+                  </div>
+
+                  
+              </div>
+
+              <div class="skill-col">
+                <div class="skill-box" data-skill="90">
+                    <div class="skill-desc">
+                      <p class="skill-title">
+                        <span><img src="icons/word.png"></span>
+                        <span>MS WORD</span>
+                      </p>
+                      <p class="skill-persentage">0%</p>
+                    </div>
+                    <div class="skill-meter"></div>
+                  </div>
+
+                  <div class="skill-box" data-skill="75">
+                    <div class="skill-desc">
+                      <p class="skill-title">
+                        <span><img src="icons/excel.png"></span>
+                        <span>MS EXCEL</span>
+                      </p>
+                      <p class="skill-persentage">0%</p>
+                    </div>
+                    <div class="skill-meter"></div>
+                  </div>
+
+                  <div class="skill-box" data-skill="65">
+                    <div class="skill-desc">
+                      <p class="skill-title">
+                        <span><img src="icons/powerpoint.png"></span>
+                        <span>MS PowerPoint</span>
+                      </p>
+                      <p class="skill-persentage">0%</p>
+                    </div>
+                    <div class="skill-meter"></div>
+                  </div>
+
+
+                  <div class="skill-box" data-skill="95">
+                    <div class="skill-desc">
+                      <p class="skill-title">
+                        <span><img src="icons/tools.png"></span>
+                        <span>HOUSE WIRING</span>
+                      </p>
+                      <p class="skill-persentage">0%</p>
+                    </div>
+                    <div class="skill-meter"></div>
+                  </div>
+
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
 
   </div>
 
 <!-- script -->
  <script src="script.js"></script>
+ <script src="flowchartAnimation.js"></script>
+ <script src="skillAnimation.js"></script>
+ <script src="background.js"></script>
+ <script>
+ document.addEventListener("DOMContentLoaded", function () {
+  const paragraph = document.querySelector(".about-description");
+  if (!paragraph) return;
+
+  const originalHTML = paragraph.innerHTML;
+
+  // convert HTML -> plain text but keep <br> as special placeholder
+  function htmlToPlainWithBR(html) {
+    const tmp = document.createElement("div");
+    tmp.innerHTML = html;
+    let out = "";
+
+    function walk(node) {
+      node.childNodes.forEach((n) => {
+        if (n.nodeType === Node.TEXT_NODE) {
+          out += n.data;
+        } else if (n.nodeType === Node.ELEMENT_NODE) {
+          if (n.tagName === "BR") {
+            out += "§§BR§§"; // placeholder for <br>
+          } else {
+            walk(n);
+            const display = getComputedStyle(n).display || "";
+            if (/(^block$)|(^flex$)|(^table$)|(^grid$)/.test(display)) out += "\n";
+          }
+        }
+      });
+    }
+
+    walk(tmp);
+    return out.replace(/\s+$/, "");
+  }
+
+  // escape HTML and convert BR placeholder -> <br>
+  function plainWithBRtoHTML(plain) {
+    const esc = plain
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+    return esc.replace(/§§BR§§/g, "<br>");
+  }
+
+  const originalPlain = htmlToPlainWithBR(originalHTML);
+
+  // popup create system
+  function createPopup(contentHTML) {
+    const overlay = document.createElement("div");
+    overlay.className = "popup-overlay";
+
+    const box = document.createElement("div");
+    box.className = "popup-box";
+
+    const header = document.createElement("div");
+    header.className = "popup-header";
+
+    const title = document.createElement("h3");
+    title.textContent = "About me";
+
+    const closeBtn = document.createElement("button");
+    closeBtn.className = "close-popup";
+    closeBtn.textContent = "Close";
+
+    header.appendChild(title);
+    header.appendChild(closeBtn);
+
+    const content = document.createElement("div");
+    content.innerHTML = contentHTML;
+
+    box.appendChild(header);
+    box.appendChild(content);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    requestAnimationFrame(() => overlay.classList.add("show"));
+
+    closeBtn.addEventListener("click", closePopup);
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closePopup();
+    });
+
+    function closePopup() {
+      overlay.classList.remove("show");
+      setTimeout(() => {
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      }, 250);
+    }
+  }
+
+  // add show more button only (no line truncation in JS)
+  const btn = document.createElement("button");
+  btn.textContent = "Show more";
+  btn.className = "show-more-btn";
+  paragraph.insertAdjacentElement("afterend", btn);
+
+  btn.addEventListener("click", () => {
+    createPopup(originalHTML);
+  });
+});
+
+ </script>
 </body>
 </html>
