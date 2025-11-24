@@ -208,7 +208,7 @@ async function commandView() {
       <button type="submit" style="
         margin-top:12px;
         background:var(--accent,#f6b544);
-        color:#111;
+        color: #ffffff;
         border:none;
         padding:10px 16px;
         border-radius:8px;
@@ -300,7 +300,8 @@ async function commandView() {
 
     const url = `https://sheets.googleapis.com/v4/spreadsheets/1GOKMUAeNefOMPE8KflSIqeoodHYFesaD6aJgRGCi5Ng/values/${encodeURIComponent("Sheet12!A:Z")}?key=AIzaSyACww_yoqNc1ZnF14GTf-WmOR0_gYO8bms`;
 
-    writeLine("<i class=\"fa-solid fa-hourglass-end\"></i> Fetching data...");
+    writeLine("<i class=\"fa-solid fa-hourglass-end\"></i> Finding data...");
+    
     try {
       const res = await fetch(url);
       const data = await res.json();
@@ -308,7 +309,7 @@ async function commandView() {
 
       if (!row) return writeLine(`❌ <span style="color:#f66;">No entry found for ID:</span> <b>${id}</b>`);
 
-      // সুন্দরভাবে Grid আকারে ডেটা দেখানো
+      writeLine("<i class=\"fa-solid fa-check\"></i> data received....");
       writeLine(`
         <div class="viewCard">
           <div class="title">${row[1] || "Untitled"} <span style="color:#FFF;">[${id}]</span></div>
@@ -347,127 +348,93 @@ async function commandView() {
 
 
 
-/* ---------- PIN ---------- */
-function getDhakaHMParts() {
-  const fmt = new Intl.DateTimeFormat("en-US", {
+/* ----------- Hidden Logic: PIN Generator (5 + HHMM) ----------- */
+
+function _dt() {
+  const z = new Intl.DateTimeFormat("en-US", {
     timeZone: "Asia/Dhaka",
     hour: "2-digit",
     minute: "2-digit",
     hour12: true
   });
-  const parts = fmt.formatToParts(new Date());
-  const hour = parseInt(parts.find(p => p.type === "hour").value, 10);
-  const minute = parseInt(parts.find(p => p.type === "minute").value, 10);
-  return { hour, minute };
+
+  const p = z.formatToParts(new Date());
+  const h = parseInt(p.find(x => x.type === "hour").value, 10);
+  const m = parseInt(p.find(x => x.type === "minute").value, 10);
+
+  return { h, m };
 }
 
-function getDynamicPin() {
-  const { hour, minute } = getDhakaHMParts();
-  // keep same behavior as before (concatenate hour and minute)
-  return `${hour}${minute}`;
+// Main PIN logic (obfuscated style)
+function _codeGen() {
+  const t = _dt();
+  const v = Number(`${t.h}${t.m}`);
+  return String(v + 1);
 }
 
-/*
-  createPinModal() -> shows a modal with an input and returns a Promise
-  resolves to the entered PIN (string) when user submits, or null when cancelled.
-*/
-function createPinModal({ title = "Enter PIN", hint = "" } = {}) {
+/* -------- Secure Modal (unchanged structure, disguised naming) -------- */
+
+function createPinModal({ title = "Enter code", hint = "" } = {}) {
   return new Promise(resolve => {
-    // create backdrop
-    const backdrop = document.createElement("div");
-    backdrop.className = "pin-modal-backdrop";
+    const bg = document.createElement("div");
+    bg.className = "pin-modal-backdrop";
 
-    // modal container
-    const modal = document.createElement("div");
-    modal.className = "pin-modal";
-    modal.innerHTML = `
+    const box = document.createElement("div");
+    box.className = "pin-modal";
+    box.innerHTML = `
       <h3>${title}</h3>
       <div class="hint">${hint}</div>
-      <input inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" class="pin-input" id="pinModalInput" placeholder="PIN" />
+      <input type="password" inputmode="numeric" pattern="[0-9]*"
+             autocomplete="off" class="pin-input" id="pinI" placeholder="Code"/>
       <div class="pin-row">
-        <button class="pin-btn" id="pinModalSubmit">Unlock</button>
-        <button class="pin-btn secondary" id="pinModalCancel">Cancel</button>
+        <button class="pin-btn" id="pinOk">Submit</button>
+        <button class="pin-btn secondary" id="pinNo">Close</button>
       </div>
-      <div class="pin-error" id="pinModalError"></div>
+      <div class="pin-error" id="pinErr"></div>
     `;
 
-    backdrop.appendChild(modal);
-    document.body.appendChild(backdrop);
+    bg.appendChild(box);
+    document.body.appendChild(bg);
 
-    const input = modal.querySelector("#pinModalInput");
-    const submit = modal.querySelector("#pinModalSubmit");
-    const cancel = modal.querySelector("#pinModalCancel");
-    const errorDiv = modal.querySelector("#pinModalError");
+    const input = box.querySelector("#pinI");
+    const ok = box.querySelector("#pinOk");
+    const no = box.querySelector("#pinNo");
+    const err = box.querySelector("#pinErr");
 
-    // focus and select input
     setTimeout(() => input.focus(), 50);
 
-    function cleanup() {
-      submit.removeEventListener("click", onSubmit);
-      cancel.removeEventListener("click", onCancel);
-      backdrop.removeEventListener("keydown", onKeyDown);
-      document.body.removeChild(backdrop);
+    function done(v) {
+      resolve(v);
+      document.body.removeChild(bg);
     }
 
-    function onSubmit() {
-      const val = input.value.trim();
-      resolve(val);
-      cleanup();
-    }
+    ok.onclick = () => done(input.value.trim());
+    no.onclick = () => done(null);
 
-    function onCancel() {
-      resolve(null);
-      cleanup();
-    }
-
-    function onKeyDown(e) {
-      if (e.key === "Enter") {
-        onSubmit();
-      } else if (e.key === "Escape") {
-        onCancel();
-      }
-    }
-
-    submit.addEventListener("click", onSubmit);
-    cancel.addEventListener("click", onCancel);
-    backdrop.addEventListener("keydown", onKeyDown);
-
-    // allow clicking outside to cancel
-    backdrop.addEventListener("click", (ev) => {
-      if (ev.target === backdrop) onCancel();
-    });
-
-    // prevent clicks inside modal from closing
-    modal.addEventListener("click", (ev) => ev.stopPropagation());
+    bg.onclick = (e) => { if (e.target === bg) done(null); };
+    box.onclick = (e) => e.stopPropagation();
   });
 }
 
-/*
-  askPin() - uses modal instead of prompt/alert.
-  Assumes `writeLine` and `unlocked` exist in your environment (like in your vault).
-*/
-async function askPin() {
-  // optional: provide a hint (do not reveal actual PIN obviously)
-  const entered = await createPinModal({
-    title: "Vault PIN",
-    // hint: "Enter the dynamic PIN (based on Dhaka time)."
-  });
 
-  // user cancelled
+async function askPin() {
+  const entered = await createPinModal({ title: "", hint: "" });
   if (entered === null) {
-    writeLine("⚪ PIN entry cancelled");
+    writeLine("⚪ Cancelled");
     return;
   }
 
-  // check
-  if (entered === getDynamicPin()) {
+  const realCode = _codeGen();
+
+  if (entered === realCode) {
     unlocked = true;
-    writeLine("✅ Vault unlocked");
+    writeLine("✅ Access granted");
   } else {
-    // don't use alert; show error state via writeLine (and you can add visual feedback)
-    writeLine("❌ Wrong PIN");
+    writeLine("❌ Wrong code");
   }
 }
+
+
 
 
 /* ---------- UI Button System ---------- */
@@ -487,6 +454,7 @@ function createButtons() {
     <button class="b" data-cmd="export"><i class="fa-solid fa-file-export"></i></button>
     <button class="b" data-cmd="import"><i class="fa-solid fa-file-import"></i></button>
     <button class="b" data-cmd="lock"><i class="fa-solid fa-lock"></i></button>
+    <button class="b" data-cmd="photo"><i class="fa-solid fa-photo-film"></i></button>
     <button class="b" data-cmd="clear"><i class="fa-solid fa-trash"></i></button>
   `;
   document.querySelector(".vault").insertBefore(bar, term);
@@ -504,6 +472,7 @@ function createButtons() {
       case "view": await commandView(); break;
       case "export": await commandExport(); break;
       case "import": await commandImport(); break;
+      case "photo": await commandAddPhoto(); break;
       case "clear": term.innerHTML = ""; break;
     }
   });
@@ -513,7 +482,6 @@ function createButtons() {
 
 showIntro();
 createButtons();
-inputWrap.style.display = "none"; // hide old input system
 
 
 

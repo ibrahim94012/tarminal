@@ -1,0 +1,23 @@
+  h1 {
+    color: #fff;
+    font-family: monospace;
+    font-size: 3.5rem;
+  }
+
+  .typing {
+    width: 15ch; /* Total characters */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #ffffff; /* Cursor */
+    animation: typing 2.5s steps(15), blink 1s step-end infinite;
+    margin-bottom: 0;
+  }
+
+  @keyframes typing {
+    0% { width: 0; }
+    100% { width: 15ch; }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }

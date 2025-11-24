@@ -3,7 +3,7 @@
 }
 .education-tree-canvas {
   width: 100%;
-  height: 100px;
+  height: 300px;
   position: relative;
   margin-bottom: 10px;
   transition: height 0.2s ease 1.4s;
@@ -497,6 +497,9 @@
 }
 
 @media(max-width:664px) {
+  h1 {
+    font-size: 2.5rem !important;
+  }
   .row .col-half:first-child {
   width: 35%;
   height: 100%;
@@ -507,7 +510,7 @@
   padding: 0 20px 20px 20px;
 }
   .education-tree-canvas {
-    height: 100px;
+    height: 400px;
   }
   .education-tree-canvas.active-school {
     height: 400px;
@@ -577,6 +580,18 @@
 }
 
 @media(max-width:580px) {
+  .landing {
+    flex-direction: column;
+  }
+  .landing-img {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .landing-img img{
+    text-align: center;
+  }
   .vault {
     width: 100vw;
   }
@@ -614,11 +629,19 @@
   .education {
     position: unset;
   }
+  .terminal {
+    padding: 10px;
+  }
+  .vault {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0;
+  }
   
 }
 @media(max-width:480px) {
   .education-tree-canvas {
-    height: 100px;
+    height: 580px;
   }
   .education-tree-canvas.active-school {
     height: 580px;

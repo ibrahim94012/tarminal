@@ -9,8 +9,14 @@
 <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="flowchart.css">
+<link rel="stylesheet" href="animation.css">
+<!-- exif-js (used for parsing EXIF from binary) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
 <!-- Inter font as user prefers -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Momo+Signature&family=Momo+Trust+Display&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="vault" role="application" aria-label="Terminal Vault">
@@ -27,8 +33,15 @@
               <img src="icons/ibrahim.jpg">
             </div>
             <div class="landing-col">
-              <div class="ceo-name">ibrahim khalil</div>
-              <p class="desc">Developer, Electrician</p>
+              <h1 class="typing">IBRAHIM KHALIL</h1>
+              <p class="desc">Web designer, Electrical Engineer</p>
+              <div class="social-links">
+                  <div class="social-icons"><a href="https://www.facebook.com/ibrahim094is"><i class="fa-brands fa-facebook-f"></i></a></div>
+                  <div class="social-icons"><a href="https://www.instagram.com/ibrahim094is/"><i class="fa-brands fa-instagram"></i></a></div>
+                  <div class="social-icons"><a aria-label="Chat on WhatsApp" href="https://wa.me/1908111251"><i class="fa-brands fa-whatsapp"></i></a></div>
+                  <div class="social-icons"><a href="#"><i class="fa-brands fa-youtube"></i></a></div>
+              </div>
+              <button class="btn cvd"><i class="fa-solid fa-download"></i> Download CV</button>
             </div>
             
         </div>
@@ -229,6 +242,7 @@
  <script src="flowchartAnimation.js"></script>
  <script src="skillAnimation.js"></script>
  <script src="background.js"></script>
+ <script src="gallary.js"></script>
  <script>
  document.addEventListener("DOMContentLoaded", function () {
   const paragraph = document.querySelector(".about-description");
